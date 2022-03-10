@@ -277,7 +277,10 @@ function CheckLiveUsers(userList){
 						let fetching = channel.messages.fetch({limit: 100}).then(messages => {
 							messages.forEach(message => {
 								message.embeds.forEach(embed => {
-									if(Date.parse(embed.footer.text) == Date.parse(apiResp.data[i].started_at)){
+									if(embed.footer == null){
+										
+									}
+									else if(Date.parse(embed.footer.text) == Date.parse(apiResp.data[i].started_at)){
 										sendOn = false;
 									}
 									else{
